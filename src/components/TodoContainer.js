@@ -9,12 +9,13 @@ import { TODOS_MOCK } from "../mocks/todo";
 export const TodoContainer = () => {
   const [todos, setTodos] = useState(TODOS_MOCK);
 
-  const handleChange = (id) => {
-    const newTodos = todos.map((todo) => {
-      if (todo.id === id) {
-        todo.completed = !todo.completed;
+  const handleChange = (todo) => {
+    const newTodos = todos.map((item) => {
+      if (item.id === todo.id) {
+        console.log("🚀 ~ newTodos ~ _todo:", todo)
+        return { ...todo }
       }
-      return todo;
+      return item;
     })
     setTodos(newTodos)
   };
@@ -29,7 +30,7 @@ export const TodoContainer = () => {
       id: uuidv4(),
       title,
       assignedTo,
-      completed: false,
+      status: "todo"
     };
 
     setTodos([...todos, newTodo])

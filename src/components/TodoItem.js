@@ -9,20 +9,27 @@ export const TodoItem = ({ todo, handleChange, deleteTodo }) => {
     textDecoration: "line-through"
   };
 
-  const { completed, id, title, assignedTo } = todo;
+  const { status, id, title, assignedTo } = todo;
 
   const assignedUserName = assignedTo && USERS_MOCK.find((user) => user.id === assignedTo).name;
 
+  const isCompleted = status === "done";
+
   return (
     <li className="todo-item">
-      <input
-        type="checkbox"
-        checked={completed}
-        onChange={() => handleChange(id)}
-      />
+      <p style={isCompleted ? completedStyle : null}>{title}</p>
+      <select
+        name="status"
+        id="status"
+        value={status}
+        onChange={(e) => handleChange({ ...todo, status: e.target.value })}
+      >
+        <option value="todo">Todo</option>
+        <option value="in-progress">In Progress</option>
+        <option value="done">Done</option>
+      </select>
       {assignedUserName && <p>{assignedUserName}</p>}
       <button onClick={() => deleteTodo(id)}>Delete</button>
-      <span style={completed ? completedStyle : null}>{title}</span>
     </li>
   );
 }
