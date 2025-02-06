@@ -12,6 +12,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:ui": "npx playwright test --ui",
+    "test:codegen": "npx playwright codegen",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -28,5 +30,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.1"
   }
 }
