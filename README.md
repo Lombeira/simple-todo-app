@@ -22,6 +22,8 @@ npm install
 
 This will install all the necessary dependencies in the local `node_modules` folder.
 
+Please check if you are using a compatible node version before trying to run the app
+
 Finally, start your development server by running:
 
 ```
