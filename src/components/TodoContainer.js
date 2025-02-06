@@ -24,10 +24,11 @@ export const TodoContainer = () => {
     setTodos(newTodos)
   };
 
-  const addTodoItem = (title) => {
+  const addTodoItem = ({ title, assignedTo }) => {
     const newTodo = {
       id: uuidv4(),
-      title: title,
+      title,
+      assignedTo,
       completed: false,
     };
 

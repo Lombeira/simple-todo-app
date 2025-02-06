@@ -1,4 +1,5 @@
 import React from "react";
+import { USERS_MOCK } from "../mocks/user";
 
 export const TodoItem = ({ todo, handleChange, deleteTodo }) => {
   const completedStyle = {
@@ -8,7 +9,9 @@ export const TodoItem = ({ todo, handleChange, deleteTodo }) => {
     textDecoration: "line-through"
   };
 
-  const { completed, id, title } = todo;
+  const { completed, id, title, assignedTo } = todo;
+
+  const assignedUserName = assignedTo && USERS_MOCK.find((user) => user.id === assignedTo).name;
 
   return (
     <li className="todo-item">
@@ -17,6 +20,7 @@ export const TodoItem = ({ todo, handleChange, deleteTodo }) => {
         checked={completed}
         onChange={() => handleChange(id)}
       />
+      {assignedUserName && <p>{assignedUserName}</p>}
       <button onClick={() => deleteTodo(id)}>Delete</button>
       <span style={completed ? completedStyle : null}>{title}</span>
     </li>
